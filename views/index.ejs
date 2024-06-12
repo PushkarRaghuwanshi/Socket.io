@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    
+    <input type="text" placeholder="Enter message">
+    <button>send message</button>
+
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+
+      socket.on("max", (msg) => {
+        console.log(msg);
+      })
+
+      document.querySelector('button').addEventListener('click', () =>{
+        const message = document.querySelector('input').value;
+
+        socket.emit('sony', message);
+      })
+    </script>
+  </body>
+</html>
